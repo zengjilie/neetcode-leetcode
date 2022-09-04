@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/valid-palindrome/
 
-# time complexity O(n)
-# space complexity O(n)
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         s = s.lower()
@@ -23,14 +21,25 @@ class Solution:
 
         return ans
 
+# time complexity O(n)
+# space complexity O(n)
 
-# =======
+# 
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
+        s = ''.join(filter(str.isalnum, s))
+
+        return s == s[::-1]
 
 # time complexity O(n)
-# space complexity O(1)
+# space complexity O(n)
 
-# edge case:
-# '.,'
+# summary: use s[::-1], slice function to reverse a string
+
+# 
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         pl, pr = 0, len(s) - 1
@@ -50,3 +59,9 @@ class Solution:
         return (ord('A') <= ord(c) <= ord('Z') or
                 ord('a') <= ord(c) <= ord('z') or
                 ord('0') <= ord(c) <= ord('9'))
+
+# time complexity O(n)
+# space complexity O(1)
+
+# caveats:
+# '.,'
