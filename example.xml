@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE wechatContacts[
+<!ELEMENT wechatContacts (contact)+>
+<!ELEMENT contact (tag, alias, gender)>
+<!ELEMENT tag (#PCDATA)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT gender (#PCDATA)>
+]>
+
+<wechatContacts>
+    <contact>
+        <tag>UT</tag>
+        <alias>Tan Yuting | UT PHD edu</alias>
+        <gender>female</gender>
+    </contact>
+    <contact>
+        <tag>UT</tag>
+        <alias>Yao Junyu | UT undergrad</alias>
+        <gender>male</gender>
+    </contact> 
+    <contact>
+        <tag>UT</tag>
+        <alias>Alex Kuang | UT undergrad</alias>
+        <gender>male</gender>
+    </contact> 
+    <contact>
+        <tag>UT MSIS</tag>
+        <alias>Xu Xiaohang | UT MSIS 21 fall</alias>
+        <gender>female</gender>
+    </contact> 
+    <contact>
+        <tag>UT MSIS</tag>
+        <alias>Xu Hui | UT MSIS 22 spring</alias>
+        <gender>female</gender>
+    </contact> 
+    <contact>
+        <tag>Farwest</tag>
+        <alias>Dai Haishan</alias>
+        <gender>female</gender>
+    </contact> 
+    <contact>
+        <tag>Farwest</tag>
+        <alias>Zhou Ming</alias>
+        <gender>male</gender>
+    </contact> 
+</wechatContacts>
