@@ -1,0 +1,5 @@
+<!ELEMENT wechatContacts (contact)+>
+<!ELEMENT contact (tag, alias, gender)>
+<!ELEMENT tag (#PCDATA)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT gender (#PCDATA)>
