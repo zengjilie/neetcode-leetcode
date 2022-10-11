@@ -1,83 +1,64 @@
----
 layout: post
-author: Jilie Zeng 
-title: Jilie's First Focused Reflection
+author: zengjilie
+title: "Jilie's Clicky Turtlehack Reflection"
 ---
 
-## Goal:
-I want to create a series of tutorials teaching people how to use vim editor, which I think is the best editor in the world. So for this part of the tutorial, I want to introduce the basic cursor movements in vim, Up(k), Down(j), Left(h), Right(l).
+## Goal
+I want to make an old-school board game. When the player touches a target, this target will disappear, and the player will get 1 point. 
+In this program, I want to achieve the basic functionality of this game. When the player reaches the boundary of the board, it will turn to the opposite direction.
 
-## Code Demo:
+## Demo
+<iframe src="https://trinket.io/embed/python/8f27440b3c" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
-<iframe src="https://trinket.io/embed/python/2f19bb180c" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+## Setbacks
+At first, I just used `player.right(180)` to turn around the player, but when the player goes out of bounds, it's not going back inside the boundary, instead, it will keep rotating in that position. I tried another approach to rotate the player first, then set the x/y coordinate to `179` which is inside the boundary, and it workes.
 
-**To Start With**
-
-I need to capture the key press on the screen. My first instinct was to use the function `input()`. However, after gave it a try, I know that wasn't the right solution.
-
-```python
-k = input()
-
-while k != "q" :
-    if k == "j":
-        # move the turtle...
-    if ...
-
-    k = input()
-```
-
-**Searching Solution**
-
-I googled on **How to move turtle using keypress** and found the solution. https://www.youtube.com/watch?v=WunZOSRM-vA&ab_channel=pyGuru. 
 
 ```python
-def f():
-    t.fd(10)
-
-def b():
-    t.bd(10)
-
-def l():
-    t.left(10)
-
-def r():
-    t.right(10)
+#boundary checking
+while True:
+  player.forward(1)
+  if player.xcor() >= 180 or player.xcor() <= -180:
+    player.right(180)
+    
+  if player.ycor() >= 180 or player.ycor() <= -180:
+    player.speed(100)
 ```
-**Setbacks**
-
-It uses `fd`, `bd`, `right`, `left` to move the turtle. However, 
-what I was hoping for is that the turtle will only move Up, Down, Left and Right. Turning directions is not what I was looking for. 
-
-**lightbule Moment**
-
-I vaguely remember a function that can move the turtle to a specific position. So I was thinking if I can get the current position of the turtle and add certain value to the x or y coordinate, this way I can get exactly what I was expecting, completely ignoring the rotation part.
-
-Here is the revised code
 
 ```python
-def f():
-  x, y = t.pos()
-  t.setpos(x, y+10)
-def b():
-  x, y = t.pos()
-  t.setpos(x, y-10)
-  
-def l():
-  x, y = t.pos()
-  t.setpos(x-10, y)
-
-def r():
-  x, y = t.pos()
-  t.setpos(x+10, y)
+#boundary checking
+while True:
+  player.forward(1)
+  if player.xcor() >= 180 or player.xcor() <= -180:
+    player.speed(100)
+    player.right(180)
+    if player.xcor() >= 180:
+      player.goto(179, player.ycor())
+    if player.xcor() <= -180:
+      player.goto(-179, player.ycor())
+    player.speed(move_amount)
+    
+  if player.ycor() >= 180 or player.ycor() <= -180:
+    player.speed(100)
+    player.right(180)
+    if player.ycor() >= 180:
+      player.goto(player.xcor(), 179)
+    if player.ycor() <= -180:
+      player.goto(player.xcor(), -179)
 ```
-
-Now it's working as I intended, I also added a new function to clean the screen and let the user do more practice.
+Another setback is when I want to achieve the a function which the player rotate to the pointed direction, instead goto that position. I tried `player.towards(x,y)`, and it didn't work. So I searched on google and found out I should use setheading instead.
 
 ```python
- def c():
-  t.clear()
+#click function
+def clicky(x, y):
+  player.goto(x,y)
 ```
 
-**Next Move**
+```python
+#click function
+def clicky(x, y):
+  player.setheading(player.towards(x,y))
+```
 
-My next step would be to make several mazes with different levels of difficulty to help the user practice cursor movement and eventually build their muscle memory.
+## What I learned from this assignment
+It was a fun project. I learned using `while` loop to constantly check the position of the player and the right position to put that `while` loop, yes, I didn't put it in the right place at first, and it prevents the code below it to execute. The process of debugging is painful but also fun. 
