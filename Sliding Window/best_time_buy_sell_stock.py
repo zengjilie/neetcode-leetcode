@@ -20,3 +20,6 @@ class Solution:
             r += 1
 
         return max
+
+# time complexity O(n)
+# space complexity O(1)

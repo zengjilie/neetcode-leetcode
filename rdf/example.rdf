@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:ex="http://example.com/schema#" > 
+    <rdf:Description rdf:about="http://example.com/nicefoodinaustin">
+        <ex:name>888 Pan Asian</ex:name> 
+        <ex:type>Thai and Vietnamese</ex:type> 
+        <ex:location>888 Pan Asian Restaurant, 2400 E Oltorf St #1A, Austin, TX 78741</ex:location> 
+        <ex:website>http://888panasianrestaurant.com/</ex:website> 
+    </rdf:Description> 
+</rdf:RDF> 
